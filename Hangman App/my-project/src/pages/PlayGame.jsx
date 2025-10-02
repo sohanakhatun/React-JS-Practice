@@ -1,10 +1,11 @@
 import { useLocation, useParams, useSearchParams } from "react-router-dom"
 import MaskedText from "../components/MaskedText/MaskedText";
 import LetterButtons from "../components/LetterButtons/LetterButtons";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import HangMan from "../components/HangMan/HangMan";
 import { Link } from "react-router-dom";
-const PlayGame = ({ currentWord }) => {
+import { WordContext } from "../context/wordContext";
+const PlayGame = () => {
     // 1st way - use usestate
 
     // 2nd way using url params. - not good for our game.
@@ -15,20 +16,20 @@ const PlayGame = ({ currentWord }) => {
     // const params = useParams();
 
     // 4th Way - use the state property of navigator to show the value of the current word.
-    const { state } = useLocation();
+    // const { state } = useLocation();
 
+    const { wordList, word } = useContext(WordContext);
     // Guessing Logic:
     const [guessedLetters, setGuessedLetters] = useState([]);
     const [step, setStep] = useState(0);
 
     function handleLetterClick(letter) {
-        if (!state.currentWord.wordValue.toUpperCase().includes(letter)) {
+        if (!word.wordValue.toUpperCase().includes(letter)) {
             setStep(step + 1);
         }
         setGuessedLetters([...guessedLetters, letter]);
     }
 
-    console.log( state?.currentWord)
     return (
         <div>
             <h1>PlayGame</h1>
@@ -38,12 +39,12 @@ const PlayGame = ({ currentWord }) => {
             {/* <p>Navigator state property Method Current Word: {state.currentWord}</p> */}
 
             {
-                state?.currentWord && (
+                word && (
                     <>
-                        <MaskedText text={state.currentWord.wordValue} guessedLetter={guessedLetters} />
+                        <MaskedText text={word} guessedLetter={guessedLetters} />
 
                         <div>
-                            <LetterButtons text={state.currentWord.wordValue} guessedLetters={guessedLetters} onLetterClick={handleLetterClick} />
+                            <LetterButtons text={word} guessedLetters={guessedLetters} onLetterClick={handleLetterClick} />
                         </div>
                         <div>
                             <HangMan step={step} />

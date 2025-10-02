@@ -3,7 +3,7 @@ import React from 'react'
 const LetterButtons = ({ text, guessedLetters, onLetterClick }) => {
     const Alphabets = "QWERTYUIOPASDFGHJKLZXCVBNM".split('');
 
-    const originalLetters = new Set(text.toUpperCase().split(''));
+    const originalLetters = new Set(text.wordValue.toUpperCase().split(''));
     const guessedLettersSet = new Set(guessedLetters);
 
     const buttonStyle = function (letter) {

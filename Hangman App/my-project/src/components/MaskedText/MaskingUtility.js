@@ -13,7 +13,7 @@ export function getMaskedString(originalWord, guessedLetters) {
 
     const guessedLettersSet = new Set(guessedLetters);
 console.log(originalWord);
-    const result = originalWord.toUpperCase().split('').map(letter => {
+    const result = originalWord.wordValue.toUpperCase().split('').map(letter => {
         if (guessedLettersSet.has(letter)) {
             return letter
         } else {
