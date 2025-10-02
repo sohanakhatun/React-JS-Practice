@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import HangMan from "../components/HangMan/HangMan";
 import { Link } from "react-router-dom";
 import { WordContext } from "../context/wordContext";
+import wordStore from "../store/WordStore";
 const PlayGame = () => {
     // 1st way - use usestate
 
@@ -18,7 +19,9 @@ const PlayGame = () => {
     // 4th Way - use the state property of navigator to show the value of the current word.
     // const { state } = useLocation();
 
-    const { wordList, word } = useContext(WordContext);
+    // const { wordList, word } = useContext(WordContext);
+    const { word } = wordStore();
+
     // Guessing Logic:
     const [guessedLetters, setGuessedLetters] = useState([]);
     const [step, setStep] = useState(0);
