@@ -2,6 +2,7 @@
 import { getMaskedString } from './MaskingUtility'
 
 const MaskedText = ({ text, guessedLetter }) => {
+    console.log(text)
     const maskedString = getMaskedString(text, guessedLetter);
 
     return (

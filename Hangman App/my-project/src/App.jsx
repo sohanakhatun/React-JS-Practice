@@ -4,18 +4,15 @@ import TextInputFormContainer from './components/TextInputForm/TextInputFormCont
 import StartGame from './pages/StartGame'
 import PlayGame from './pages/PlayGame'
 import { useState } from 'react'
+import Home from './pages/Home'
 
 function App() {
-
-  // 1. to access the current word in a different page.
-  const [currentWord, setCurrentWord] = useState("");
-  
   return (
     <>
       <Routes>
-        <Route path='/' element={<TextInputFormContainer setCurrentWord={setCurrentWord} />} />
+        <Route path='/' element={<Home/>}/>
         <Route path='/start' element={<StartGame />} />
-        <Route path='/play' element={<PlayGame currentWord={currentWord} />} />
+        <Route path='/play' element={<PlayGame />} />
         {/* <Route path='/play/:text' element={<PlayGame currentWord={currentWord} />} /> */}
       </Routes>
     </>

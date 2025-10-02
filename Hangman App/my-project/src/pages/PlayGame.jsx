@@ -3,7 +3,7 @@ import MaskedText from "../components/MaskedText/MaskedText";
 import LetterButtons from "../components/LetterButtons/LetterButtons";
 import { useState } from "react";
 import HangMan from "../components/HangMan/HangMan";
-
+import { Link } from "react-router-dom";
 const PlayGame = ({ currentWord }) => {
     // 1st way - use usestate
 
@@ -22,12 +22,13 @@ const PlayGame = ({ currentWord }) => {
     const [step, setStep] = useState(0);
 
     function handleLetterClick(letter) {
-        if (!state.currentWord.toUpperCase().includes(letter)) {
+        if (!state.currentWord.wordValue.toUpperCase().includes(letter)) {
             setStep(step + 1);
         }
         setGuessedLetters([...guessedLetters, letter]);
     }
 
+    console.log( state?.currentWord)
     return (
         <div>
             <h1>PlayGame</h1>
@@ -36,14 +37,23 @@ const PlayGame = ({ currentWord }) => {
             <p>Path Params method Current Word: {params.text}</p> */}
             {/* <p>Navigator state property Method Current Word: {state.currentWord}</p> */}
 
-            <MaskedText text={state.currentWord} guessedLetter={guessedLetters} />
+            {
+                state?.currentWord && (
+                    <>
+                        <MaskedText text={state.currentWord.wordValue} guessedLetter={guessedLetters} />
 
-            <div>
-                <LetterButtons text={state.currentWord} guessedLetters={guessedLetters} onLetterClick={handleLetterClick} />
-            </div>
-            <div>
-                <HangMan step={step} />
-            </div>
+                        <div>
+                            <LetterButtons text={state.currentWord.wordValue} guessedLetters={guessedLetters} onLetterClick={handleLetterClick} />
+                        </div>
+                        <div>
+                            <HangMan step={step} />
+                        </div>
+                    </>
+                )
+            }
+
+            <Link to="/start" className="text-blue-400">Start Game Link</Link>
+
         </div>
     )
 }

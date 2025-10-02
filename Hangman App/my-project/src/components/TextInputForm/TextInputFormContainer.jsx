@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import TextInputForm from './TextInputForm';
 import { useNavigate } from 'react-router-dom';
 
-const TextInputFormContainer = ({ setCurrentWord }) => {
+const TextInputFormContainer = () => {
     const [inputType, setInputType] = useState("password");
     const [showHideText, setShowHideText] = useState("Show");
     const [value, setValue] = useState("");
@@ -11,11 +11,10 @@ const TextInputFormContainer = ({ setCurrentWord }) => {
         event.preventDefault();
         console.log("Form Submitted", value)
         if (value) {
-            setCurrentWord(value)
             //  navigate('/play')
             // navigate(`/play?text=${value}`);
             // navigate(`/play/${value}`);
-            navigate('/play', { state: { currentWord: value } })
+            navigate('/play', { state: { currentWord: {wordValue: value} } })
         }
     }
 
@@ -35,6 +34,11 @@ const TextInputFormContainer = ({ setCurrentWord }) => {
             setShowHideText("Hide");
         }
     }
+
+    useEffect(() => {
+        console.log("Component loaded")
+    })
+
 
     return (
         <TextInputForm
