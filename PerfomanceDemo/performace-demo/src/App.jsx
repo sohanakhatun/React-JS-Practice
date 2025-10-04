@@ -3,6 +3,7 @@ import SlowComponent from './SlowComponent'
 import ButtonModal from './ButtonModal';
 import { useState } from 'react';
 import RefactorComponent from './RefactorComponent';
+import Sample from './Sample';
 
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
           Something done here
         </div>
       </RefactorComponent>
+      
     </>
   )
 }
