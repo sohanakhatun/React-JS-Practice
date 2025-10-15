@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      <h1>Todo App Using RTK</h1>
+      <h1 className='heading'>Todo App Using RTK</h1>
       <TodoInput />
       <TodoList/>
     </>

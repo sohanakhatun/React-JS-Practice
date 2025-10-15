@@ -3,16 +3,26 @@ import TodoItem from "./TodoItem";
 
 function TodoList() {
     const todos = useSelector(state => state.todos);
-    return (
-        <div>
-            Todo List : <br />
-            {todos.map(todoItem => {
-                return (
-                    <TodoItem key={todoItem.id} id={todoItem.id} text={todoItem.text} isCompleted={todoItem.completed}  />
-                )
-            })}
-        </div>
-    )
+  return (
+    <div className="todo-list-container">
+      <h2 className="todo-list-title">Todo List</h2>
+
+      <div className="todo-items-wrapper">
+        {todos.length > 0 ? (
+          todos.map(todoItem => (
+            <TodoItem
+              key={todoItem.id}
+              id={todoItem.id}
+              text={todoItem.text}
+              isCompleted={todoItem.completed}
+            />
+          ))
+        ) : (
+          <p className="todo-empty">No todos yet. Add one!</p>
+        )}
+      </div>
+    </div>
+  );
 }
 
 export default TodoList;
