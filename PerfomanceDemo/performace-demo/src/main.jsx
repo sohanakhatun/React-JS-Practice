@@ -4,10 +4,12 @@ import './index.css'
 import App from './App.jsx'
 import AppMemo from './AppMemo.jsx'
 import Sample from './Sample.jsx'
+import Form from './Form.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     {/* <App />
     <AppMemo/> */}
-    <Sample/>
+    {/* <Sample/> */}
+    <Form/>
   </StrictMode>,
 )
