@@ -1,3 +1,6 @@
+import DisplayCoordinates from "./DisplayCoordinates";
+import MovingCircle from "./MovingCircle";
+
 function ClickImpressionsTracker({ children }) {
   const handleUserClick = () => {
     console.log("User Clicked:", children.type.name);
@@ -25,6 +28,9 @@ function App() {
           <SimpleComponent x={100} />
         </MouseEnterImpressionsTracker>
       </ClickImpressionsTracker>
+
+      <DisplayCoordinates />
+      <MovingCircle/>
     </>
   );
 }
